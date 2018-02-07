@@ -1,0 +1,11 @@
+commit 36060170e60781168dd916f9a1aa3d5099974190 (HEAD -> master)
+Author: AndreyGinsburg <andrey_ginsburg@mail.ru>
+Date:   Wed Feb 7 23:34:04 2018 +0300
+
+    add task1/status.txt
+
+commit c814cead4ec71c2d6762b13c9259655623a37b10
+Author: AndreyGinsburg <andrey_ginsburg@mail.ru>
+Date:   Wed Feb 7 23:17:42 2018 +0300
+
+    add.gitignore
