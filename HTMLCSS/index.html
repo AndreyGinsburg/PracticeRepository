@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 
@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="Без названия.jpg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <script src="index.js"></script>
+    <script src="script.js"></script>
    
 </head>
 
@@ -18,9 +20,8 @@
             <img class="logo" src="logo.png" alt="Logo">
         </div>
 
-        <div class="user-info">
-            <img class="user"src="15147547804090.png" title="Username">
-            <p class="textuser">Username</p>
+        <div id="user-info">
+
         </div>
 
         <button class="btn btn-sign-out">
@@ -40,139 +41,15 @@
 
          <div class="filters">
              <img class="Yui" src="Yui.png" title="Filters">
-             <input type="text" class="filter" placeholder="username">
-             <input type="text" class=filter placeholder="#hashtags">
-         </div>
-
-         <div class="filters-by-date">
-            from:
-            <input type="text" class="filter filt-by-date" placeholder="dd.mm.yyyy">
-            to:
-            <input type="text" class="filter filt-by-date" placeholder="dd.mm.yyyy">
+             <input id=author type="text" class=filter placeholder="username">
+             <input id=hashtags type="text" class=filter placeholder="#hashtags">
+            <input  id=date type="text" class=filter  placeholder="dd.mm.yyyy">
         </div>
     </div>
 
     <div class="main">
 
-        <div class="feed">
-
-            <div class="post">
-
-                <div class="post-toolbar">
-
-                    <div class="post-upload-data">
-                       hh:mm / dd.mm.yyyy
-                    </div>
-                    <i class="like-icon material-icons">favorite_border</i>
-                    <i class="edit-icon material-icons">mode_edit</i>
-                    <div class="post-username">Username</div>
-                    <i class="delete-icon material-icons">delete</i>
-
-                </div>
-
-                <img  class ="posts" src="photo.png"  alt="photo">
-
-                <div class="post-info">
-
-                    <div class="description">
-                        description
-                    </div>
-
-                    <div class="hashtags">
-                        #hashtags
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="post">
-
-                <div class="post-toolbar">
-
-                    <div class="post-upload-data">
-                       hh:mm / dd.mm.yyyy
-                    </div>
-                    <i class="like-icon material-icons">favorite_border</i>
-                    <i class="edit-icon material-icons">mode_edit</i>
-                    <div class="post-username">Username</div>
-                    <i class="delete-icon material-icons">delete</i>
-
-                </div>
-
-                <img  class ="posts" src="photo.png"  alt="photo">
-
-                <div class="post-info">
-
-                    <div class="description">
-                        description
-                    </div>
-
-                    <div class="hashtags">
-                        #hashtags
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="post">
-
-                <div class="post-toolbar">
-
-                    <div class="post-upload-data">
-                       hh:mm / dd.mm.yyyy
-                    </div>
-                    <i class="like-icon material-icons">favorite_border</i>
-                    <i class="edit-icon material-icons">mode_edit</i>
-                    <div class="post-username">Username</div>
-                    <i class="delete-icon material-icons">delete</i>
-
-                </div>
-
-                <img  class ="posts" src="photo.png"  alt="photo">
-
-                <div class="post-info">
-
-                    <div class="description">
-                        description
-                    </div>
-
-                    <div class="hashtags">
-                        #hashtags
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="post">
-
-                <div class="post-toolbar">
-
-                    <div class="post-upload-data">
-                       hh:mm / dd.mm.yyyy
-                    </div>
-                    <i class="like-icon material-icons">favorite_border</i>
-                    <i class="edit-icon material-icons">mode_edit</i>
-                    <div class="post-username">Username</div>
-                    <i class="delete-icon material-icons">delete</i>
-
-                </div>
-
-                <img  class ="posts" src="photo.png"  alt="photo">
-
-                <div class="post-info">
-
-                    <div class="description">
-                        description
-                    </div>
-
-                    <div class="hashtags">
-                        #hashtags
-                    </div>
-
-                </div>
+        <div class="feed" id="feed">
 
             </div>
 
@@ -181,6 +58,7 @@
             </button>
 
         </div>
+
 
         <div class="footer">
 

@@ -43,7 +43,7 @@ html,body, main {
        width: 180px;
 }
 
-.user-info{
+#user-info{
     margin: 10px 80px auto auto;
     font-size: 15px;
     color:rgba(0, 0, 0, 0.767);
@@ -138,22 +138,22 @@ html,body, main {
         margin:10px 5px 10px 5px;
         width: 60px;
 }
-   
+
 .feed{
         align-items: center;
-        margin-left:220px;
+        margin-left:0px;
         margin-right:auto;
         margin-top:100px;
         display:flex;
-        flex-direction: column;
+        flex-direction: column;  
 }
 
 .posts{
-        width: 100%;
+        width: 800px;
 }
 
 .post{
-        width: 150%;
+        width: 90%;
         display: flex;
         align-self: center;
         flex-direction: column;
@@ -199,7 +199,6 @@ html,body, main {
 }
 
 .post-info{
-       width: 100%;
         margin-top:10px;
         display:flex;
         justify-content: space-between;
