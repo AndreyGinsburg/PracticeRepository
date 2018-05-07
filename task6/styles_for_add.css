@@ -1,0 +1,142 @@
+html,body, main {
+    margin: 0px;
+    height: 100%;
+    background-color: rgb(238, 228, 176);
+}
+
+.btn{
+    font-size:15px;
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin:auto;
+}
+
+.date{
+    width:300px;
+}
+
+.addchange{
+    margin-top: 200px;
+    height: 200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: stretch;
+}
+
+.header{
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: stretch;
+        position: fixed;
+        width: 100%;
+        height: 70px;
+        border-bottom: 2px solid #59595a;
+        background-color: rgb(238, 228, 176);
+        display:flex; 
+}
+
+.feed{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.user{
+        width: 40px;
+        height: 40px;
+}
+    
+.Logo{
+    margin: 20px  40px auto auto; 
+}
+
+.logo{
+       height: 30px;
+       width: 180px;
+}
+
+#user-info{
+    margin: 10px 80px auto auto;
+    font-size: 15px;
+    color:rgba(0, 0, 0, 0.767);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.btn-sign-out{
+    background-color:rgb(255, 242, 0);
+    margin-right: 80px;
+    width:100px;
+}
+
+.signout{
+    margin-right: 90px;
+    height: 20px;
+    width: 80px;
+}
+
+.user-logo{
+    font-size: 35px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.picture1{
+    margin-top: 80px;
+    height:400px;
+    width: 200px;
+}
+
+.picture2{
+    margin-top:450px;
+    margin-bottom: 0px;
+    height:400px;
+    width:240px;
+}
+
+.footer{
+    background-color: rgb(238, 228, 176);
+    height:80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #59595a;
+}
+
+.sitename{
+    margin:20px 0px 20px 50px;
+    width: 30%;
+    font-size:30px;
+    color: #6908d8
+}
+
+.update-string{
+    margin: auto auto auto auto;
+    align-self: auto;
+    font-size: 25px;
+    color: #003748c0
+}
+
+.contacts-info{
+    display: flex;
+    width: 32%;
+    flex-direction: column;
+    margin-right: 30px;
+    color:rgba(0, 0, 0, 0.651);
+}
+
+.contacts-info *{
+    text-align: end;
+    margin: 10px 0px 0px 10px;
+}
+
+
+
