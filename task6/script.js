@@ -12,16 +12,16 @@ window.dom=(function(){
     let a = ` 
     <div class="feed" id="feed"> 
     
-    <div class="post"> 
+    <div class="post" id=${post.id}> 
     
     <div class="post-toolbar"> 
     
-    <div class="post-upload-data"> 
+    <div class="post-upload-data" id= ${post.createdAt}>
     ${new Date(post.createdAt).getDate()}.${new Date(post.createdAt).getMonth() + 1}.${new Date(post.createdAt).getFullYear()} 
     </div> 
     <i class="like-icon material-icons">favorite_border</i> 
     <i class="edit-icon material-icons">mode_edit</i> 
-    <div class="post-username">${post.author}</div> 
+    <div class="post-username" id=${post.author}>${post.author}</div> 
     <i class="delete-icon material-icons">delete</i> 
     
     </div> 
@@ -67,11 +67,11 @@ window.dom=(function(){
     let filter = {} 
     if (authors) filter.author = authors; 
     if (date) { 
-    let date_el = date.split(/\D/); 
-    filter.Date = new Date(date_el[0], date_el[1], date_el[2], date_el[3], date_el[4]); 
+    let date_el = date.split('.'); 
+    filter.Date = new Date(date_el[2], date_el[1], date_el[0]); 
     } 
     if (hashtags) { 
-    filter.hashtags = hashtags.split(','); 
+    filter.hashtags = hashtags.split(' '); 
     } 
     let count = dom.posts_show; 
     return photoPosts.getPhotoPosts(dom.posts_show, 5, filter); 

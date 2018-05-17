@@ -201,8 +201,6 @@ var photoPosts = [
    },
 ]
 
-let a=20;
-
 var functions = (function() {
     return {
 
@@ -226,7 +224,7 @@ var functions = (function() {
                             return false;
                     }
                     if (filter.hasOwnProperty('Date')) {
-                        if (Date.parse(filter.Date) !== Date.parse(photo.createdAt))
+                        if (Date.parse(filter.Date) !== Date.parse(new Date(new Date(photo.createdAt).getFullYear(),new Date(photo.createdAt).getMonth()+1,new Date(photo.createdAt).getDate())))
                             return false;
                     }
                     if (filter.hasOwnProperty('hashtags')) {
@@ -242,11 +240,13 @@ var functions = (function() {
         },
 
         getPhotoPost(id) {
-            if (typeof id !== 'string' || id === '')
+            if (typeof id !== 'string' || id === ''){
                 return;
+            }
             for (var i = 0; i < photoPosts.length; ++i) {
-                if (photoPosts[i].id === id)
+                if (photoPosts[i].id === id){
                     return photoPosts[i];
+                }
             }
             return 'There is no such id '
         },
@@ -271,7 +271,9 @@ var functions = (function() {
         },
 
         addPhotoPost(photo) {
+            let a=Number(localStorage.getItem("maxID"));
             a++;
+            localStorage.setItem("maxID",a+"");
             photo.id = a+"";
             if (!this.validatePhotoPost(photo))
                 return false;
@@ -295,7 +297,7 @@ var functions = (function() {
                 if (editPost.hasOwnProperty('hashtags'))
                     post.hashtags = editPost.hashtags;
                 if (editPost.hasOwnProperty('like'))
-                    post.like = editPost.like;
+                    post.likes = editPost.like;
                 return true;
             }
             return false;
@@ -326,113 +328,7 @@ for (method in functions) {
 
 
 
-var filter1 = {
-    author: 'Ginpukisreal'
-}
-
-var filter2 = {
-    hashtags: ['#Gomel']
-}
-
-var filter3 = {
-    Date: new Date(2018, 02, 19, 23, 18)
-}
-
-var filter4 = {
-    author: 'dubovik_official',
-    Date: new Date(2018, 02, 19, 23, 18)
-}
-
-var filter5 = {
-    author: 'Akiyama_Mio',
-    Date: new Date(2017, 02, 21, 23, 12)
-}
-
-var filter6 = {
-    author: 'Noname'
-}
-console.log("\ntesting getPhotoPosts\n")
-console.log("skip and top = default    :", photoPosts.getPhotoPosts());
-console.log("skip = 4 and top = default:", photoPosts.getPhotoPosts(4));
-console.log("skip = 7 and top = 4      :", photoPosts.getPhotoPosts(7, 4));
-console.log("filtering1     :", photoPosts.getPhotoPosts(0, 10, filter1));
-console.log("filtering2     :", photoPosts.getPhotoPosts(0, 10, filter2));
-console.log("filtering3     :", photoPosts.getPhotoPosts(0, 10, filter3));
-console.log("filtering4     :", photoPosts.getPhotoPosts(0, 10, filter4));
-console.log("filtering5     :", photoPosts.getPhotoPosts(0, 10, filter5));
-console.log("invalid value  :", photoPosts.getPhotoPosts(""))
 
 
-console.log("\ntesting getPhotoPost\n");
-console.log("1 id       :", photoPosts.getPhotoPost('1'));
-console.log("7 id      :", photoPosts.getPhotoPost('7'));
-console.log("invalid id (42):", photoPosts.getPhotoPost('42'));
 
-console.log("\ntesting validatePhotoPost\n");
-console.log("Good post    :", photoPosts.validatePhotoPost({
-    id: '17',
-    description: 'Наконец-то успех',
-    createdAt: new Date(2018, 02, 23, 23, 18),
-    author: 'boris_minsk',
-    photoLink: 'http://quizup-players.imgix.net/players/1033889251093300208/pictures/aldv7u6sky/original.jpg',
-    hashtags: ['#IMCтакнерадует'],
-    likes: ['Ginpukisreal','VKoz','kukkel','Katarina1999']
-}));
-console.log("invalid link:", photoPosts.validatePhotoPost({
-    id: '17',
-    description: 'Наконец-то успех',
-    createdAt: new Date(2018, 02, 23, 23, 18),
-    author: 'boris_minsk',
-    photoLink: '',
-    hashtags: ['#IMCтакнерадует'],
-    likes: ['Ginpukisreal','VKoz','kukkel','Katarina1999']
-}));
-console.log("invalid date:", photoPosts.validatePhotoPost({
-    id: '17',
-    description: 'Наконец-то успех',
-    createdAt: "dcds",
-    author: 'boris_minsk',
-    photoLink: 'http://quizup-players.imgix.net/players/1033889251093300208/pictures/aldv7u6sky/original.jpg',
-    hashtags: ['#IMCтакнерадует'],
-    likes: ['Ginpukisreal','VKoz','kukkel','Katarina1999']
-}));
-
-console.log("\ntesting addPhotoPost\n");
-console.log("all posts:", photoPosts);
-console.log("invalid post:", photoPosts.addPhotoPost({
-    id: '',
-    description: 'Tennant',
-    createdAt: new Date(2017, 02, 25, 18, 36),
-    author: '',
-    photoLink: 'http://www.kino-teatr.ru/acter/album/68835/555738.jpg',
-    hashtags: ['#DoctroWho'],
-    likes: ['Kurisu_Makise']
-}));
-console.log("all posts:", photoPosts);
-console.log("valid post  :", photoPosts.addPhotoPost({
-    id: '',
-    description: 'Tennant',
-    createdAt: new Date(2017, 02, 25, 18, 36),
-    author: 'BBC_Official',
-    photoLink: 'http://www.kino-teatr.ru/acter/album/68835/555738.jpg',
-    hashtags: ['#DoctroWho'],
-    likes: ['Kurisu_Makise']
-}));
-console.log("all posts:", photoPosts);
-
-
-console.log("\ntesting editPhotoPost\n");
-console.log("4th id now:", photoPosts.getPhotoPost('4'));
-console.log("edit post 4   :", photoPosts.editPhotoPost('4', {
-    photoLink: 'http://naviny.by/media/2016.06_w3/download/BGU.jpg',
-    description: 'Главный Корпус'
-}));
-console.log("post 4 :", photoPosts.getPhotoPost('4'));
-console.log("invalid value        :", photoPosts.editPhotoPost(''));
-
-
-console.log("\ntesting removePhotoPost-");
-console.log("invalid value:", photoPosts.removePhotoPost(''));
-console.log("remove 7th post     :", photoPosts.removePhotoPost('7'));
-console.log("get 7th post :", photoPosts.getPhotoPost('7'));
 

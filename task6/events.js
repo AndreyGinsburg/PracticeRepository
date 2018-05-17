@@ -1,5 +1,8 @@
 let user;
     function f(){
+        if(localStorage.getItem("maxID")===null){
+            localStorage.setItem("maxID", "22");
+            }
     if(localStorage.getItem("posts")===null){
         localStorage.setItem("posts", JSON.stringify(photoPosts));
         }
@@ -101,7 +104,105 @@ load more
         Clear();
         showPosts();
         let x=document.getElementsByClassName("btn btn-load-more")[0];
-        x.addEventListener("click",pressLoadMoreButton)
+        x.addEventListener("click",(e)=>{
+            pressLoadMoreButton();
+            let Posts=document.getElementsByClassName("post");
+            for (post_t of Posts){
+                var aut=post_t.getElementsByClassName("post-username")[0].id;
+                let red=post_t.getElementsByClassName("edit-icon material-icons")[0];
+                var dat=post_t.getElementsByClassName("post-upload-data")[0].id;
+                if(aut===user){
+                    let del=post_t.getElementsByClassName("delete-icon material-icons")[0];
+                    let num=post_t.id;
+                    del.addEventListener("click",(rem)=>{
+                        removePhotoPost(num);
+                        localStorage.setItem("posts", JSON.stringify(photoPosts));
+                        k();
+                    });
+                    red.addEventListener("click",(ee)=>{
+                        Username(user);
+                let a=`
+                <div class="feed">
+    
+        <img class="picture1" src="add1.png" >
+        
+        <div class="addchange">
+        <input id="link" type="text" class=date placeholder="link">
+        <input id="description" type="text" class=date placeholder="description">
+        <input  id="hashtags" type="text" class=date  placeholder="#hashtags">
+        <button class="addph">
+        Change
+        </button>
+        </div>
+        
+        <img class="picture2" src="add2.png">
+    
+    </div>
+    `
+    let x=document.getElementsByClassName("main")[0];
+    x.innerHTML=a;
+    a=`
+    <title>Ginpugramovich:Edit</title>
+    <link rel="shortcut icon" href="Без названия.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles_for_add.css" rel="stylesheet">
+    <script src="index.js"></script>
+    <script src="script.js"></script>
+    <script src="events.js"></script>
+    `
+    x=document.getElementsByTagName("head")[0];
+    x.innerHTML=a;
+    a=`
+    <div class="Logo">
+        <img class="logo" src="logo_for_add.png" alt="Logo">
+    </div>
+    
+    <div id="user-info">
+            <img class="user"src="15147547804090_for_add.png" title="Username">
+    </div>
+    
+    <button class="btn btn-sign-out">
+        <img class="signout" src="011_Veselyiy_rodzher-550x550.png" title="sign out">
+    </button>
+    `
+    x=document.getElementsByClassName("header")[0];
+    x.innerHTML=a;
+    Username(user);
+    x=document.getElementsByClassName("btn btn-sign-out")[0]
+    x.addEventListener("click",w);
+    x=document.getElementsByClassName("addph")[0];
+    x.addEventListener("click",(e)=>{
+        let link = document.getElementById("link").value 
+        let description = document.getElementById("description").value 
+        let hashtags = document.getElementById("hashtags").value 
+        let tags=hashtags.split(','); 
+        let author=returnUser()
+        let post1 = {
+            id: num,
+            description: description,
+            createdAt: new Date(dat),
+            author: user,
+            photoLink: link,
+            hashtags: [],
+            likes: getPhotoPost(num).likes
+        }
+        k();
+        removePhotoPost(num);
+        addPhotoPost(post1);
+        localStorage.setItem("posts", JSON.stringify(photoPosts));
+        k();
+    })
+})
+}
+        let num=post_t.id;
+        let lucas=post_t.getElementsByClassName("like-icon material-icons")[0]; 
+        if (photoPosts.getElementById(num).likes.indexOF(user)!=-1){
+            lucas.addEventListener("click",(fun)=>{
+                
+            })
+        }
+            }
+            })
         x=document.getElementsByClassName("btn btn-sign-out")[0];
         x.addEventListener("click",w);
         x=document.getElementsByClassName("find")[0];
@@ -163,7 +264,7 @@ x.addEventListener("click",(e)=>{
     let link = document.getElementById("link").value 
     let description = document.getElementById("description").value 
     let hashtags = document.getElementById("hashtags").value 
-    let tags=hashtags.split(','); 
+    let tags=hashtags.split(' '); 
     let author=returnUser()
     let post1 = {
         id:'',
@@ -171,16 +272,107 @@ x.addEventListener("click",(e)=>{
         createdAt: new Date(2026, 2, 5, 22, 11),
         author: user,
         photoLink: link,
-        hashtags: [],
-        likes: []
+        hashtags: tags,
+        likes: getPhotoPost(num).likes
     }
     k();
     addPhotoPost(post1);
     localStorage.setItem("posts", JSON.stringify(photoPosts));
+    k();
 })
 localStorage.setItem("posts", JSON.stringify(photoPosts));
+
         })
+        let Posts=document.getElementsByClassName("post");
+        for (post_t of Posts){
+            var aut=post_t.getElementsByClassName("post-username")[0].id;
+            if(aut===user){
+                let del=post_t.getElementsByClassName("delete-icon material-icons")[0];
+                let red=post_t.getElementsByClassName("edit-icon material-icons")[0];
+                let num=post_t.id;
+                del.addEventListener("click",(rem)=>{
+                    removePhotoPost(num);
+                    localStorage.setItem("posts", JSON.stringify(photoPosts));
+                    k();
+                });
+                red.addEventListener("click",(ee)=>{
+                    Username(user);
+            let a=`
+            <div class="feed">
+
+    <img class="picture1" src="add1.png" >
+    
+    <div class="addchange">
+    <input id="link" type="text" class=date placeholder="link">
+    <input id="description" type="text" class=date placeholder="description">
+    <input  id="hashtags" type="text" class=date  placeholder="#hashtags">
+    <button class="addph">
+    Add
+    </button>
+    </div>
+    
+    <img class="picture2" src="add2.png">
+
+</div>
+`
+let x=document.getElementsByClassName("main")[0];
+x.innerHTML=a;
+a=`
+<title>Ginpugramovich:Edit</title>
+<link rel="shortcut icon" href="Без названия.jpg" type="image/x-icon">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="styles_for_add.css" rel="stylesheet">
+<script src="index.js"></script>
+<script src="script.js"></script>
+<script src="events.js"></script>
+`
+x=document.getElementsByTagName("head")[0];
+x.innerHTML=a;
+a=`
+<div class="Logo">
+    <img class="logo" src="logo_for_add.png" alt="Logo">
+</div>
+
+<div id="user-info">
+        <img class="user"src="15147547804090_for_add.png" title="Username">
+</div>
+
+<button class="btn btn-sign-out">
+    <img class="signout" src="011_Veselyiy_rodzher-550x550.png" title="sign out">
+</button>
+`
+x=document.getElementsByClassName("header")[0];
+x.innerHTML=a;
+Username(user);
+x=document.getElementsByClassName("btn btn-sign-out")[0]
+x.addEventListener("click",w);
+x=document.getElementsByClassName("addph")[0];
+x.addEventListener("click",(e)=>{
+    let link = document.getElementById("link").value 
+    let description = document.getElementById("description").value 
+    let hashtags = document.getElementById("hashtags").value 
+    let tags=hashtags.split(','); 
+    let author=returnUser()
+    let post1 = {
+        id:num,
+        description: description,
+        createdAt: new Date(2026, 2, 5, 22, 11),
+        author: user,
+        photoLink: link,
+        hashtags: tags,
+        likes: []
     }
+    k();
+    removePhotoPost(num);
+    addPhotoPost(post1);
+    localStorage.setItem("posts", JSON.stringify(photoPosts));
+    k();
+                })
+            })
+    }
+    
+}
+}
     function w(){
             Clear();
             let  b=`
